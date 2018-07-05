@@ -3,7 +3,6 @@ package com.Application.Pages;
 
 import java.util.List;
 import java.util.Properties;
-import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -17,7 +16,6 @@ import com.mobile.automation.framrwork.GenericMethods;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 
@@ -91,21 +89,11 @@ public boolean processPayment(WebDriver driver, String cardNum,String creditCard
 			if (isElementPresent(creditCard, driver)) {
 				clickOnElement(driver, creditCard);
 			}
-			
 			if (cardNum.equals("")) {
 				clickOnElement(driver, home);
 				LOGGER.info("Payment details are not provided");
 			}else{
-				Set<String> availableContexts = ((AppiumDriver) driver).getContextHandles();
-				System.out.println("Total No of Context Found After we reach to WebView = "+ availableContexts.size());
-				for(String context : availableContexts) {
-				if(context.contains("WEBVIEW")){
-				System.out.println("Context Name is " + context);
-				((AppiumDriver) driver).context(context);
-				break;
-				}
-				if (isElementPresent(cardNumber, driver)) {
-					clickOnElement(driver, cardNumber);
+				clickOnElement(driver, cardNumber);
 				cardNumber.sendKeys(cardNum);
 				clickOnElement(driver, cardName);
 				cardName.sendKeys(creditCardName);
@@ -116,8 +104,6 @@ public boolean processPayment(WebDriver driver, String cardNum,String creditCard
 				cvv.sendKeys(cardCvv);
 				clickOnElement(driver, home);
 				stepStatus=true;
-				}
-				}
 			}
 			
 			
