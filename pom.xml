@@ -1,0 +1,385 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.sample.eBay</groupId>
+	<artifactId>eBayAutomationProject</artifactId>
+	<version>1.0.0.1</version>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<slf-log4j-version>1.7.12</slf-log4j-version>
+		<gson-version>2.2.4</gson-version>
+		<allure.version>1.4.16</allure.version>
+		<aspectj.version>1.8.5</aspectj.version>
+		<!-- Java -->
+		<jdk.version>1.8</jdk.version>
+
+		<!-- Spring -->
+		<spring.version>4.2.3.RELEASE</spring.version>
+
+		<!-- Web -->
+		<jstl.version>1.2</jstl.version>
+		<servletapi.version>3.1.0</servletapi.version>
+
+		<!-- Maven -->
+		<maven.enforcer.version>1.1.1</maven.enforcer.version>
+		<maven.compiler.version>3.0</maven.compiler.version>
+		<maven.eclipse.version>2.10</maven.eclipse.version>
+		<maven.jar.version>3.0.2</maven.jar.version>
+
+		<!-- jersey version -->
+		<jersery.version>2.23.1</jersery.version>
+
+		<!-- junit version -->
+		<junit.version>4.8.2</junit.version>
+
+		<!-- Logging -->
+		<logback.version>1.0.13</logback.version>
+
+		<!-- Maven assembly -->
+		<maven.assembly.version>2.3</maven.assembly.version>
+	</properties>
+	<dependencies>
+	
+	<!-- Appium Related Dependencies -->
+		<dependency>
+    		<groupId>com.amazonaws</groupId>
+    		<artifactId>aws-java-sdk-bundle</artifactId>
+    		<version>1.11.315</version>
+		</dependency>
+		<dependency>
+		    <groupId>io.appium</groupId>
+		    <artifactId>java-client</artifactId>
+		    <version>5.0.0-BETA9</version>
+		</dependency>
+    
+	    <dependency>
+	        <groupId>org.seleniumhq.selenium</groupId>
+	        <artifactId>selenium-server</artifactId>
+	        <version>3.4.0</version>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.seleniumhq.selenium</groupId>
+	        <artifactId>selenium-firefox-driver</artifactId>
+	        <version>3.4.0</version>
+	    </dependency>
+	    
+	    <dependency>
+	        <groupId>org.seleniumhq.selenium</groupId>
+	        <artifactId>htmlunit-driver</artifactId>
+	        <version>2.24</version>
+	    </dependency>
+	    
+	    <!-- https://mvnrepository.com/artifact/com.relevantcodes/extentreports -->
+		<dependency>
+    		<groupId>com.relevantcodes</groupId>
+    		<artifactId>extentreports</artifactId>
+    		<version>2.41.2</version>
+		</dependency>
+	    
+	    
+	<!-- Appium End -->
+		
+		<dependency>
+			<groupId>com.saucelabs</groupId>
+			<artifactId>sauce_testng</artifactId>
+			<version>2.1.20</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jayway.restassured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.3.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.9.10</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf-log4j-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.takari.junit</groupId>
+			<artifactId>takari-cpsuite</artifactId>
+			<version>1.2.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+			<version>1.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>${gson-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20140107</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.uuid</groupId>
+			<artifactId>java-uuid-generator</artifactId>
+			<version>3.1.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>ooxml-schemas</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.11</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.11</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-excelant</artifactId>
+			<version>3.11</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+			<version>3.11</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-scratchpad</artifactId>
+			<version>3.11</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
+			<artifactId>owasp-java-html-sanitizer</artifactId>
+			<version>r156</version>
+		</dependency>
+				
+		<dependency>
+		    <groupId>net.sourceforge.jexcelapi</groupId>
+		    <artifactId>jxl</artifactId>
+		    <version>2.6</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.glassfish.jersey.bundles</groupId>
+			<artifactId>jaxrs-ri</artifactId>
+			<version>2.22.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.cognizant</groupId>
+			<artifactId>CC</artifactId>
+			<version>1.1</version>
+			<scope>system</scope>
+   		   <systemPath>${project.basedir}/lib/CC.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>3.3</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>com.cognizant</groupId>
+			<artifactId>csvextract</artifactId>
+			<version>1.1</version>
+			<scope>system</scope>
+   		   <systemPath>${project.basedir}/lib/csvextract.jar</systemPath>
+		</dependency>	
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore-osgi</artifactId>
+			<version>4.4.4</version>
+			</dependency>
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.4</version>
+		</dependency> 
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+<!-- 			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.6.0</version>
+				<executions>
+					<execution>
+						<id>execorder1</id>
+						<phase>generate-test-resources</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<mainClass>com.charter.sit.utility.ModifyXML</mainClass>
+						</configuration>
+					</execution>
+					<execution>
+						<id>execorder2</id>
+						<phase>test</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<mainClass>com.charter.sit.utility.TestNgtoCSVAndCSVtoCassandraCSV</mainClass>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin> -->
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+					</suiteXmlFiles>
+
+					<systemProperties>
+						<property>
+							<name>productbuildno</name>
+							<value>${productbuildno}</value>
+						</property>
+						<property>
+							<name>dstyesno</name>
+							<value>${dstyesno}</value>
+						</property>
+						<property>
+							<name>envfordb</name>
+							<value>${envfordb}</value>
+						</property>
+						<property>
+							<name>envforbaseurl</name>
+							<value>${envforbaseurl}</value>
+						</property>
+						<property>
+							<name>jenkinscurrentbuildno</name>
+							<value>${jenkinscurrentbuildno}</value>
+						</property>
+						<property>
+							<name>noofvm</name>
+							<value>${noofvm}</value>
+						</property>
+						<property>
+							<name>ipaddress</name>
+							<value>${ipaddress}</value>
+						</property>
+						<property>
+							<name>keyspace</name>
+							<value>${keyspace}</value>
+						</property>
+						<property>
+							<name>project</name>
+							<value>${project}</value>
+						</property>
+						<property>
+							<name>portal</name>
+							<value>${portal}</value>
+						</property>
+						<property>
+							<name>burstyesorno</name>
+							<value>${burstyesorno}</value>
+						</property>
+						<property>
+							<name>sauceusername</name>
+							<value>${sauceusername}</value>
+						</property>
+						<property>
+							<name>sauceaccesskey</name>
+							<value>${sauceaccesskey}</value>
+						</property>
+						<property>
+							<name>proj</name>
+							<value>${proj}</value>
+						</property>
+						<redirectTestOutputToFile>true</redirectTestOutputToFile>
+						<testFailureIgnore>true</testFailureIgnore>
+					</systemProperties>
+					<threadCount>13</threadCount>
+				</configuration>
+			</plugin>
+
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											exec-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.2,)
+										</versionRange>
+										<goals>
+											<goal>java</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

@@ -1,0 +1,10 @@
+target/
+.idea/
+.svn/
+.settings/
+log4j-application.*
+*.csv
+cnet-testng.xml
+/bin/
+*.class
+*.png

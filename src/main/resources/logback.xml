@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<configuration scan="true" scanPeriod="30 seconds">
+	<contextName>DEP User Tool</contextName>
+
+	<property name="FILE_INITIAL" value="csg-client" />
+	<property name="FILE_EXT" value="log" />
+
+
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+		<!-- 
+			Setting the resetJUL property of LevelChangePropagator will reset all previous level configurations of all j.u.l. loggers. However, previously 
+			installed handlers will be left untouched. 
+		-->
+		<resetJUL>true</resetJUL>
+	</contextListener>
+
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		
+		<file>${FILE_INITIAL}.${FILE_EXT}</file>
+		
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			
+			<!-- daily roll over -->
+			<fileNamePattern>${FILE_INITIAL}.%d{yyyy-MM-dd}.${FILE_EXT}</fileNamePattern>
+			
+			<!-- day's -->
+			<maxHistory>5</maxHistory>
+			
+			<!-- size in MB -->
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+        		<maxFileSize>1MB</maxFileSize>
+      		</timeBasedFileNamingAndTriggeringPolicy>
+		
+		</rollingPolicy>
+
+		<encoder>
+			<pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<root level="info">
+		<appender-ref ref="FILE" />
+	</root>
+	
+</configuration>

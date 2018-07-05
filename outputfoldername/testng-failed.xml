@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite configfailurepolicy="continue" guice-stage="DEVELOPMENT" verbose="10" name="Failed suite [Suite]" parallel="methods" data-provider-thread-count="2">
+  <test thread-count="20" name="Charter Automation">
+    <packages>
+      <package name="com.charter.devops.charternettestsuites.Watchtv.*"/>
+      <package name="com.charter.devops.charternettestsuites.billpay.*"/>
+      <package name="com.charter.devops.charternettestsuites.global.*"/>
+      <package name="com.charter.devops.charternettestsuites.livetv.*"/>
+      <package name="com.charter.devops.charternettestsuites.login.*"/>
+      <package name="com.charter.devops.charternettestsuites.myaccount.*"/>
+      <package name="com.charter.devops.charternettestsuites.pom.*"/>
+      <package name="com.charter.devops.charternettestsuites.search.*"/>
+      <package name="com.charter.devops.charternettestsuites.support.*"/>
+    </packages>
+  </test> <!-- Charter Automation -->
+</suite> <!-- Failed suite [Suite] -->

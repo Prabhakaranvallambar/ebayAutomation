@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [TVENativeApp_Suite]">
+  <test name="LoginTest">
+    <classes>
+      <class name="com.TVEapplication.Module.SpectrumTVTest">
+        <methods>
+<<<<<<< HEAD
+          <include name="LiveTVFilter"/>
+=======
+          <include name="Settings_Parental_Control"/>
+>>>>>>> branch 'master' of https://gitlab.spectrumxg.com/E2E/OneApp_Appium.git
+        </methods>
+      </class> <!-- com.TVEapplication.Module.SpectrumTVTest -->
+    </classes>
+  </test> <!-- LoginTest -->
+  <test name="LoginTest(failed)">
+    <classes>
+      <class name="com.TVEapplication.Module.SpectrumTVTest">
+        <methods>
+          <include name="releaseDevice"/>
+          <include name="initialize_Appium"/>
+          <include name="suite"/>
+          <include name="NavigatetoHomePage"/>
+          <include name="logResultToTWB"/>
+          <include name="LiveTVFilter"/>
+        </methods>
+      </class> <!-- com.TVEapplication.Module.SpectrumTVTest -->
+    </classes>
+  </test> <!-- LoginTest(failed) -->
+</suite> <!-- Failed suite [TVENativeApp_Suite] -->
