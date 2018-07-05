@@ -23,7 +23,7 @@ import io.appium.java_client.android.AndroidKeyCode;
 public class eBayProductPage extends GenericMethods{
 	private static final Logger LOGGER = Logger.getLogger(eBayProductPage.class);
 	public boolean stepStatus;
-	public static int searchVal,randomResult;
+	public static Integer searchVal,randomResult;
 	public static String productName,itemDesc,itemPrice;
 	ExtentTest logger;
 	
@@ -136,7 +136,7 @@ public boolean searchData(WebDriver driver, String searchText) throws Exception 
 				}
 					String searchResult=driver.findElement(By.xpath("//*[@resource-id='com.ebay.mobile:id/textview_item_count']")).getAttribute("text");
 					String[] resVal=searchResult.split(" ");
-					int searchVal=Integer.parseInt(resVal[0]);
+					Integer searchVal=Integer.parseInt(resVal[0]);
 						if (searchVal>0) {
 							stepStatus=true;
 							LOGGER.info(searchVal+ " Results are displayed for search text entered");
@@ -166,11 +166,11 @@ public boolean selectingSearchResults(WebDriver driver) throws Exception {
 		if (isElementPresent(text_Slot, driver)) {
 			clickOnElement(driver, text_Slot);
 		}
-		int minVal=1;
+		Integer minVal=1;
 		List<WebElement> Val=driver.findElements(By.xpath("//*[@resource-id='com.ebay.mobile:id/cell_collection_item']"));
 		int maxVal=Val.size();
 		LOGGER.info(maxVal);
-		int randomResult=(int) (Math.random()*(maxVal-minVal))+minVal;
+		Integer randomResult=(int) ((Math.random()*(maxVal-minVal))+minVal);
 		if (randomResult==1) {
 			Swipe(driver, "up", "medium");
 		}

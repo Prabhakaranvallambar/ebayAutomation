@@ -24,7 +24,7 @@ import io.appium.java_client.android.AndroidKeyCode;
 public class eBayLogin extends GenericMethods{
 	private static final Logger LOGGER = Logger.getLogger(eBayLogin.class);
 	public boolean stepStatus;
-	public static int searchVal,randomResult;
+	public static Integer searchVal,randomResult;
 	public static String productName,itemDesc,productPrice;
 	ExtentReports extent;
 	ExtentTest logger;
