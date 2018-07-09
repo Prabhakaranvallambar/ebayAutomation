@@ -35,6 +35,7 @@ public class MobileBase {
 	public static String deviceName;    
 	public static String platformName;
 	public static String platformVersion;
+	public static String port;
 	public final static String DeviceOS=System.getProperty("device");
 
 	public static WebDriver driver=null;
@@ -57,6 +58,7 @@ public class MobileBase {
 			platformName = applicationProp.getProperty("platformName");
 			platformVersion = applicationProp.getProperty("platformVersion");
 			appName = applicationProp.getProperty("appName");
+			port = applicationProp.getProperty("port");
 			} catch (Exception e) {
 				LOGGER.info("property values are not loaded ");
 
@@ -97,7 +99,7 @@ public  WebDriver setDesiredCapabilities() throws InterruptedException, Exceptio
 					capability.setCapability("appPackage",appPackage);
 					capability.setCapability("appActivity",appActivity);
 					
-					driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"),capability);
+					driver = new AndroidDriver(new URL("http://0.0.0.0:"+port+"/wd/hub"),capability);
 		}catch(Exception e) {
 			e.printStackTrace();
 			

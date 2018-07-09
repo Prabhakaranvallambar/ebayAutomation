@@ -66,11 +66,7 @@ public class eBayTest extends MobileBase{
 		String usernameText=applicationProp.getProperty("usernameText");
 		String passwordText=applicationProp.getProperty("passwordText");
 		String searchText=applicationProp.getProperty("searchText");
-		String cardNum=applicationProp.getProperty("cardNum");
-		String creditCardName=applicationProp.getProperty("creditCardName");
-		String cardExpiryMonth=applicationProp.getProperty("cardExpiryMonth");
-		String cardExpiryYear=applicationProp.getProperty("cardExpiryYear");
-		String cardCvv=applicationProp.getProperty("cardCvv");
+		String upiName=applicationProp.getProperty("upiName");
 		eBayLogin eB=new eBayLogin(driver);
 		stepResult=eB.SignIn(driver,usernameText,passwordText);
 		if (stepResult) {
@@ -107,7 +103,7 @@ public class eBayTest extends MobileBase{
 			assertEquals(stepResult, true);
 		}
 		eBayPayment eBP=new eBayPayment(driver);
-		stepResult=eBP.processPayment(driver,cardNum,creditCardName,cardExpiryMonth,cardExpiryYear,cardCvv);
+		stepResult=eBP.processPayment(driver,upiName);
 		if (stepResult) {
 			logger.log(LogStatus.PASS, "Payment operation was successful");
 			//assertTrue(stepResult);

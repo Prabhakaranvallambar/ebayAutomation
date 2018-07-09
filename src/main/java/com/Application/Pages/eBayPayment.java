@@ -62,6 +62,25 @@ public class eBayPayment extends GenericMethods{
 	@FindBy(xpath="//*[@resource-id='com.ebay.mobile:id/home']")
 	public WebElement home;
 	
+	@FindBy(xpath="//android.widget.RadioButton[@text='UPI']")
+	public WebElement UPIRadioBtn;
+	
+	@FindBy(xpath="//*[@text='UPI']")
+	public WebElement UPI;
+	
+	@FindBy(xpath="//*[@resource-id='vpAddress']")
+	public WebElement VPA;
+	
+	@FindBy(xpath="//*[@resource-id='validateUser']")
+	public WebElement makePayment;
+	
+	@FindBy(xpath="//*[@resource-id='android:id/message']")
+	public WebElement popMessage;
+	
+	@FindBy(xpath="//*[@text='OK']")
+	public WebElement okBtn;
+	
+	
 	public eBayPayment(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
@@ -74,41 +93,36 @@ public class eBayPayment extends GenericMethods{
 		
 **********************************************************************************************************************************/	
 
-public boolean processPayment(WebDriver driver, String cardNum,String creditCardName, String cardExpiryMonth,String cardExpiryYear,String cardCvv) throws Exception {
+public boolean processPayment(WebDriver driver, String upiName) throws Exception {
 	
 	
 	try {
 		stepStatus = false;
-		
 		waitForInvisibility(pageLoad);
-		if (isElementPresent(creditCard, driver)) {
-			clickOnElement(driver, creditCard);
-			clickOnElement(driver, cardType);
+		if (isElementPresent(UPI, driver)) {
+			clickOnElement(driver, UPI);
+			clickOnElement(driver, UPIRadioBtn);
 			clickOnElement(driver, payBtn);
 			waitForInvisibility(pageLoad);
-			if (isElementPresent(creditCard, driver)) {
-				clickOnElement(driver, creditCard);
+			type(VPA, upiName);
+			clickOnElement(driver, makePayment);
+			if (isElementPresent(makePayment, driver)) {
+				clickOnElement(driver, makePayment);
 			}
-			if (cardNum.equals("")) {
-				clickOnElement(driver, home);
-				LOGGER.info("Payment details are not provided");
-			}else{
-				clickOnElement(driver, cardNumber);
-				cardNumber.sendKeys(cardNum);
-				clickOnElement(driver, cardName);
-				cardName.sendKeys(creditCardName);
-				clickOnElement(driver, expiryMonth);
-				clickOnElement(driver, By.xpath("//*[@text='"+cardExpiryMonth+"']"));
-				clickOnElement(driver, expiryYear);
-				clickOnElement(driver, By.xpath("//*[@text='"+cardExpiryYear+"']"));
-				cvv.sendKeys(cardCvv);
-				clickOnElement(driver, home);
-				stepStatus=true;
-			}
-			
-			
+				String message=popMessage.getAttribute("text");
+				if (message.contains("Please enter your register Virtual")) {
+					stepStatus=false;
+					LOGGER.info("The following error message is displayed"+message);
+					clickOnElement(driver, okBtn);
+				}else{
+					stepStatus=true;
+				}
+				if (isElementPresent(home, driver)) {
+					clickOnElement(driver, home);
+				}
+				
 		}
-	
+		
 	}catch (Exception e) {
 			e.printStackTrace();
 		}
