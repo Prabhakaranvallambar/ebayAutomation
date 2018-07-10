@@ -26,8 +26,6 @@ public class Login extends GenericMethods{
 	public boolean stepStatus;
 	public static Integer searchVal,randomResult;
 	public static String productName,itemDesc,productPrice;
-	ExtentReports extent;
-	ExtentTest logger;
 	
 	public static String usernameText,passwordText;
 	

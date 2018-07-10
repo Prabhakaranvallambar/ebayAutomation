@@ -23,7 +23,7 @@ import io.appium.java_client.android.AndroidKeyCode;
 public class ProductPage extends GenericMethods{
 	private static final Logger LOGGER = Logger.getLogger(ProductPage.class);
 	public boolean stepStatus;
-	public static String productName,itemDesc,itemPrice;
+	public static String productName,itemPrice;
 	
 	@FindBy(xpath="//*[@resource-id='com.ebay.mobile:id/search_box']")
 	private WebElement searchBox;
@@ -168,14 +168,15 @@ public boolean selectingSearchResults(WebDriver driver) throws Exception {
 		int maxVal=Val.size();
 		LOGGER.info(maxVal);
 		Integer randomResult=(int) ((Math.random()*(maxVal-minVal))+minVal);
+		LOGGER.info(randomResult+"Item Number "+randomResult+ "in the search result is going to be selected");
 		if (randomResult==1) {
 			Swipe(driver, "up", "medium");
+			LOGGER.info("As the random number is "+randomResult+" Swiping up the page so that 1st search result is not selected ");
 		}
-		LOGGER.info(randomResult);
 		WebElement itemName=driver.findElement(By.xpath("//*[@resource-id='com.ebay.mobile:id/recycler']//android.widget.RelativeLayout["+randomResult+"]//android.widget.RelativeLayout[1]//*[@resource-id='com.ebay.mobile:id/textview_item_title']"));
-		productName=itemName.getAttribute("text");
-		itemDesc=driver.findElement(By.xpath("//*[@resource-id='com.ebay.mobile:id/recycler']//android.widget.RelativeLayout["+randomResult+"]//android.widget.RelativeLayout[1]//*[@resource-id='com.ebay.mobile:id/shipping_text']")).getAttribute("text");
-		itemPrice=driver.findElement(By.xpath("//*[@resource-id='com.ebay.mobile:id/recycler']//android.widget.RelativeLayout["+randomResult+"]//android.widget.RelativeLayout[1]//*[@resource-id='com.ebay.mobile:id/textview_item_price']")).getAttribute("text");	
+		productName=itemName.getAttribute("text").trim();
+		String price=driver.findElement(By.xpath("//*[@resource-id='com.ebay.mobile:id/recycler']//android.widget.RelativeLayout["+randomResult+"]//android.widget.RelativeLayout[1]//*[@resource-id='com.ebay.mobile:id/textview_item_price']")).getAttribute("text");	
+		itemPrice=price.replace("₹","Rs. ");
 		clickOnElement(driver, itemName);
 		waitForInvisibility(pageLoad);
 		LOGGER.info("Selected product's Name is : "+productName);
@@ -242,15 +243,6 @@ public boolean proceedOrder(WebDriver driver) throws Exception {
 		stepStatus = false;
 		waitForInvisibility(pageLoad);
 		driver.getPageSource();
-		WebElement itemName=driver.findElement(By.xpath("//*[contains(@text,'"+productName+"')]"));
-		WebElement productPrice =driver.findElement(By.xpath("//*[contains(@text,'"+itemPrice+"')]"));
-		if (isElementPresent(itemName, driver) && isElementPresent(productPrice, driver))  {
-			stepStatus=true;
-			LOGGER.info("The product name "+itemName+" matches with the details in the  product page");
-		}else{
-			LOGGER.info("The product name "+itemName+" matches with the details in the  product page");
-		}
-		
 		if (isElementPresent(buyItNow, driver)) {
 			clickOnElement(driver, buyItNow);
 			if (isElementPresent(review, driver)) {
@@ -259,13 +251,19 @@ public boolean proceedOrder(WebDriver driver) throws Exception {
 			waitForInvisibility(pageLoad);
 			((AndroidDriver) driver).getPageSource();
 		}
-
 		Swipe(driver, "up", "fast");
 		Swipe(driver, "up", "fast");
+		driver.getPageSource();
+		sleep(3);
+		if (isElementPresent(driver.findElement(By.xpath("//*[contains(@text,'"+productName+"')]")), driver) && isElementPresent(driver.findElement(By.xpath("//*[contains(@text,'"+itemPrice+"')]")), driver) ) {
+			stepStatus=true;
+			LOGGER.info("The product name "+productName+" and product price"+itemPrice+" matches with the details in the  product page");
+		}else{
+			LOGGER.info("The product name "+productName+" and product price"+itemPrice+" does not matches with the details in the  product page");
+		}
 		
 		if (isElementPresent(proceedToPay, driver)) {
 			clickOnElement(driver, proceedToPay);
-			stepStatus=true;
 		}
 		
 	}catch (Exception e) {

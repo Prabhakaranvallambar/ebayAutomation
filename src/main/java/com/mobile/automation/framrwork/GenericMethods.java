@@ -39,7 +39,6 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 import io.appium.java_client.ios.IOSDriver;
 
-//extending mobile base test class to use update twb results method to update reports in internal methods
 public class GenericMethods extends MobileBase{
 	private static final int TIMEOUT_IN_SECONDS = 40;
 	private static final Logger LOGGER = Logger.getLogger(GenericMethods.class);
@@ -101,7 +100,6 @@ public class GenericMethods extends MobileBase{
 		try{
 			WebElement element1=driver.findElement(element);
 			element1.click();
-			//LOGGER.info("Clicked on element: " + element);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -115,11 +113,8 @@ public class GenericMethods extends MobileBase{
 	protected void clickOnElement(WebDriver driver,WebElement element) {
 		LOGGER.info(new Object(){}.getClass().getEnclosingMethod().getName()+" : "+element.toString());
 		try{
-			//String element1=element.toString();
-			//List<WebElement> element1=driver.findElements(webElement);
 			WebElement el=element;
 			el.click();
-			//LOGGER.info("Clicked on element: " + element);
 		}catch(Exception e){
 			e.printStackTrace();
 			WebElement e2=element;
@@ -160,7 +155,6 @@ public class GenericMethods extends MobileBase{
             
         } catch (Exception e) {
             LOGGER.info(locator + "Is Not present on the page");
-            // LOGGER.error(e);
         }
         return waitValue;
 

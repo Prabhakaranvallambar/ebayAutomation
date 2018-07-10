@@ -23,8 +23,6 @@ import io.appium.java_client.android.AndroidKeyCode;
 public class PaymentPage extends GenericMethods{
 	private static final Logger LOGGER = Logger.getLogger(PaymentPage.class);
 	public boolean stepStatus;
-	ExtentTest logger;
-	public static String usernameText,passwordText;
 	
 	@FindBy(xpath="//*[@resource-id='com.ebay.mobile:id/progress_bar']")
 	private WebElement pageLoad;

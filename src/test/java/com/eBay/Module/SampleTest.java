@@ -71,7 +71,6 @@ public class SampleTest extends MobileBase{
 		stepResult=eB.SignIn(driver,usernameText,passwordText);
 		if (stepResult) {
 			logger.log(LogStatus.PASS, "User is able to SignIn with the following Username :"+usernameText+" and password :"+passwordText);
-			assertTrue(stepResult);
 		}else{
 			logger.log(LogStatus.FAIL, "User is unable to SignIn with the following Username :"+usernameText+" and password :"+passwordText);
 			assertEquals(stepResult, true);
@@ -80,7 +79,6 @@ public class SampleTest extends MobileBase{
 		stepResult=eBPP.searchData(driver,searchText);
 		if (stepResult) {
 			logger.log(LogStatus.PASS, "Search operation was successful with the following search data :"+searchText);
-			assertTrue(stepResult);
 		}else{
 			logger.log(LogStatus.FAIL, "Search operation was unsuccessful with the following search data :"+searchText);
 			assertEquals(stepResult, true);
@@ -89,7 +87,7 @@ public class SampleTest extends MobileBase{
 		stepResult=eBPP.selectingSearchResults(driver);
 		if (stepResult) {
 			logger.log(LogStatus.PASS, "Selection of random product from the search results was successful");
-			assertTrue(stepResult);
+			logger.log(LogStatus.PASS, "The following Product was Selected "+eBPP.productName+" was selected");
 		}else{
 			logger.log(LogStatus.FAIL, "Selection of random product from the search results was unsuccessful");
 			assertEquals(stepResult, true);
@@ -97,7 +95,7 @@ public class SampleTest extends MobileBase{
 		stepResult=eBPP.proceedOrder(driver);
 		if (stepResult) {
 			logger.log(LogStatus.PASS, "Order was reviewed and successfully proceeded till payment page");
-			assertTrue(stepResult);
+			logger.log(LogStatus.PASS, "The following Product Name "+eBPP.productName+" with a cost price of "+eBPP.itemPrice+" was displayed in the checkout page");
 		}else{
 			logger.log(LogStatus.FAIL, "Order was not proceeded till payment page");
 			assertEquals(stepResult, true);
@@ -105,10 +103,9 @@ public class SampleTest extends MobileBase{
 		PaymentPage eBP=new PaymentPage(driver);
 		stepResult=eBP.processPayment(driver,upiName);
 		if (stepResult) {
-			logger.log(LogStatus.PASS, "Payment operation was successful");
-			//assertTrue(stepResult);
+			logger.log(LogStatus.PASS, "Payment operation was successful with the following UPI Name "+upiName);
 		}else{
-			logger.log(LogStatus.FAIL, "Payment operation was unsuccessful as payment details were not given");
+			logger.log(LogStatus.FAIL, "Payment operation was unsuccessful with the following UPI Name "+upiName);
 			assertEquals(stepResult, true);
 		}
 		}catch (Exception e) {

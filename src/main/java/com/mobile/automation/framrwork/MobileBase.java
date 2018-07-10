@@ -21,6 +21,7 @@ import org.testng.annotations.BeforeSuite;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.StartsActivity;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
 
 public class MobileBase {
 	String workingDir = System.getProperty("user.dir");
@@ -40,7 +41,6 @@ public class MobileBase {
 
 	public static WebDriver driver=null;
 	
-
 	public WebDriver getBaseDriver() {
 		return driver;
 	}
@@ -48,7 +48,6 @@ public class MobileBase {
 	 public MobileBase() {
 		 try {
 			applicationProp = new Properties();
-			//configProp = new Properties();
 			inputStreamForApplicationProp = getClass().getClassLoader().getResourceAsStream(applicationBrowserProperties);
 			applicationProp.load(inputStreamForApplicationProp);
 			
@@ -74,7 +73,6 @@ public class MobileBase {
 		driver = setDesiredCapabilities();
 		waitForActivity(appActivity, 30);
 		System.out.println(driver);
-		//String className = this.getClass().getSimpleName();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}			
@@ -86,9 +84,8 @@ public  WebDriver setDesiredCapabilities() throws InterruptedException, Exceptio
 		try {
 			File app = new File(System.getProperty("user.dir") +"/eBay.apk");
 					DesiredCapabilities capability =new DesiredCapabilities();
-					/*AppiumDriverLocalService service = AppiumDriverLocalService.buildDefaultService();
-					service.start();*/
 					capability .setCapability("autoAcceptAlerts",true);
+					capability.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS,true);
 					capability.setCapability("platformName",platformName);
 					capability.setCapability("deviceName", deviceName);
 					capability.setCapability("platformVersion",platformVersion);
@@ -107,6 +104,9 @@ public  WebDriver setDesiredCapabilities() throws InterruptedException, Exceptio
 		}
 		return driver;
 	}
+
+
+
 public void waitForActivity(String desiredActivity, int wait) throws InterruptedException
 {
     int counter = 0;
@@ -119,15 +119,6 @@ public void waitForActivity(String desiredActivity, int wait) throws Interrupted
 }
 	
 
-	@AfterSuite(alwaysRun=true)
-	public static void releaseDevice() throws IOException, InterruptedException{
-	}
-	 
-	@AfterTest(alwaysRun=true)
-	public void logResultToTWB() {
-		/*String className = this.getClass().getSimpleName();
-		logResult(result, className);*/
-	}
 	
 	
 }
