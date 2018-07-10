@@ -163,12 +163,11 @@ public boolean selectingSearchResults(WebDriver driver) throws Exception {
 		if (isElementPresent(text_Slot, driver)) {
 			clickOnElement(driver, text_Slot);
 		}
-		Integer minVal=1;
+		Integer minVal=2;
 		List<WebElement> Val=driver.findElements(By.xpath("//*[@resource-id='com.ebay.mobile:id/cell_collection_item']"));
-		int maxVal=Val.size();
-		LOGGER.info(maxVal);
+		Integer maxVal=Val.size();
 		Integer randomResult=(int) ((Math.random()*(maxVal-minVal))+minVal);
-		LOGGER.info(randomResult+"Item Number "+randomResult+ "in the search result is going to be selected");
+		LOGGER.info("Item Number "+randomResult+ " in the search result is going to be selected");
 		if (randomResult==1) {
 			Swipe(driver, "up", "medium");
 			LOGGER.info("As the random number is "+randomResult+" Swiping up the page so that 1st search result is not selected ");

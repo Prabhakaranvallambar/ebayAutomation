@@ -107,10 +107,10 @@ public boolean processPayment(WebDriver driver, String upiName) throws Exception
 			if (isElementPresent(makePayment, driver)) {
 				clickOnElement(driver, makePayment);
 			}
-				String message=popMessage.getAttribute("text");
-				if (message.contains("Please enter your register Virtual")) {
+			String messageBox=popMessage.getAttribute("text");
+				if (messageBox.contains("Please enter your register Virtual")) {
 					stepStatus=false;
-					LOGGER.info("The following error message is displayed"+message);
+					LOGGER.info("The following error message is displayed"+messageBox);
 					clickOnElement(driver, okBtn);
 				}else{
 					stepStatus=true;

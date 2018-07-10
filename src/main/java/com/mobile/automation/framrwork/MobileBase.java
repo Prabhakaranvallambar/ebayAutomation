@@ -97,6 +97,7 @@ public  WebDriver setDesiredCapabilities() throws InterruptedException, Exceptio
 					capability.setCapability("appActivity",appActivity);
 					
 					driver = new AndroidDriver(new URL("http://0.0.0.0:"+port+"/wd/hub"),capability);
+					LOGGER.info("Creating appium remote session");
 		}catch(Exception e) {
 			e.printStackTrace();
 			
@@ -110,12 +111,13 @@ public  WebDriver setDesiredCapabilities() throws InterruptedException, Exceptio
 public void waitForActivity(String desiredActivity, int wait) throws InterruptedException
 {
     int counter = 0;
+    LOGGER.info("Waiting for App Activity to get started");
     do {
         Thread.sleep(1000);
         counter++;
     } while(((StartsActivity) driver).currentActivity().contains(desiredActivity) && (counter<=wait));
 
-    LOGGER.info(("Activity appeared :" + ((StartsActivity) driver).currentActivity()));
+    LOGGER.info(("Activity started :" + ((StartsActivity) driver).currentActivity()));
 }
 	
 
