@@ -6,7 +6,7 @@
     <!-- Tests started -->    
         <test name="Login" preserve-order="true">
         <classes>
-        <class name="com.eBay.Module.eBayTest"/>
+        <class name="com.eBay.Module.SampleTest"/>
         </classes>
        </test>      
 
