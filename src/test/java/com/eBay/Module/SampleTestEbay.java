@@ -18,18 +18,18 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.Application.Pages.eBayLogin;
-import com.Application.Pages.eBayPayment;
-import com.Application.Pages.eBayProductPage;
+import com.Application.Pages.Login;
+import com.Application.Pages.PaymentPage;
+import com.Application.Pages.ProductPage;
 import com.mobile.automation.framrwork.GenericMethods;
 import com.mobile.automation.framrwork.MobileBase;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class eBayTest extends MobileBase{
+public class SampleTestEbay extends MobileBase{
 	
-	private static final Logger LOGGER = Logger.getLogger(eBayTest.class);
+	private static final Logger LOGGER = Logger.getLogger(SampleTestEbay.class);
 	public boolean stepResult;
 	public static String detailInstanceName;
 	ExtentReports extent;
@@ -67,7 +67,7 @@ public class eBayTest extends MobileBase{
 		String passwordText=applicationProp.getProperty("passwordText");
 		String searchText=applicationProp.getProperty("searchText");
 		String upiName=applicationProp.getProperty("upiName");
-		eBayLogin eB=new eBayLogin(driver);
+		Login eB=new Login(driver);
 		stepResult=eB.SignIn(driver,usernameText,passwordText);
 		if (stepResult) {
 			logger.log(LogStatus.PASS, "User is able to SignIn with the following Username :"+usernameText+" and password :"+passwordText);
@@ -76,7 +76,7 @@ public class eBayTest extends MobileBase{
 			logger.log(LogStatus.FAIL, "User is unable to SignIn with the following Username :"+usernameText+" and password :"+passwordText);
 			assertEquals(stepResult, true);
 		}
-		eBayProductPage eBPP=new eBayProductPage(driver);
+		ProductPage eBPP=new ProductPage(driver);
 		stepResult=eBPP.searchData(driver,searchText);
 		if (stepResult) {
 			logger.log(LogStatus.PASS, "Search operation was successful with the following search data :"+searchText);
@@ -102,7 +102,7 @@ public class eBayTest extends MobileBase{
 			logger.log(LogStatus.FAIL, "Order was not proceeded till payment page");
 			assertEquals(stepResult, true);
 		}
-		eBayPayment eBP=new eBayPayment(driver);
+		PaymentPage eBP=new PaymentPage(driver);
 		stepResult=eBP.processPayment(driver,upiName);
 		if (stepResult) {
 			logger.log(LogStatus.PASS, "Payment operation was successful");

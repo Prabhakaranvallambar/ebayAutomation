@@ -20,68 +20,68 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 
 
-public class eBayPayment extends GenericMethods{
-	private static final Logger LOGGER = Logger.getLogger(eBayPayment.class);
+public class PaymentPage extends GenericMethods{
+	private static final Logger LOGGER = Logger.getLogger(PaymentPage.class);
 	public boolean stepStatus;
 	ExtentTest logger;
 	public static String usernameText,passwordText;
 	
 	@FindBy(xpath="//*[@resource-id='com.ebay.mobile:id/progress_bar']")
-	public WebElement pageLoad;
+	private WebElement pageLoad;
 	
 	@FindBy(xpath="//*[contains(@text,'Credit Card')]")
-	public WebElement creditCard;
+	private WebElement creditCard;
 	
 	@FindBy(xpath="//android.widget.RadioButton[@text='American Express']")
-	public WebElement cardType;
+	private WebElement cardType;
 	
 	@FindBy(xpath="//*[@resource-id='btnPay']")
-	public WebElement payBtn;
+	private WebElement payBtn;
 	
 	@FindBy(xpath="(//*[@id='CreditCardDetailsForm']/*/*[@class='android.widget.EditText'])[1]")
-	public WebElement cardNumber;
+	private WebElement cardNumber;
 	
 	@FindBy(xpath="(//*[@id='CreditCardDetailsForm']/*/*[@class='android.widget.EditText'])[2]")
-	public WebElement cardName;
+	private WebElement cardName;
 	
 	@FindBy(xpath="//android.widget.Spinner[@text='MM']")
-	public WebElement expiryMonth;
+	private WebElement expiryMonth;
 	
 	@FindBy(xpath="//android.widget.Spinner[@text='YY']")
-	public WebElement expiryYear;
+	private WebElement expiryYear;
 	
 	@FindBy(xpath="(//*[@id='CreditCardDetailsForm']/*/*[@class='android.widget.EditText'])[3]")
-	public WebElement cvv;
+	private WebElement cvv;
 	
 	@FindBy(xpath="//*[@resource-id='com.ebay.mobile:id/home']")
-	public WebElement closePaymentPage;
+	private WebElement closePaymentPage;
 	
 	@FindBy(xpath="//*[@text='select address']")
-	public WebElement selectAddress;
+	private WebElement selectAddress;
 	
 	@FindBy(xpath="//*[@resource-id='com.ebay.mobile:id/home']")
-	public WebElement home;
+	private WebElement home;
 	
 	@FindBy(xpath="//android.widget.RadioButton[@text='UPI']")
-	public WebElement UPIRadioBtn;
+	private WebElement UPIRadioBtn;
 	
 	@FindBy(xpath="//*[@text='UPI']")
-	public WebElement UPI;
+	private WebElement UPI;
 	
 	@FindBy(xpath="//*[@resource-id='vpAddress']")
-	public WebElement VPA;
+	private WebElement VPA;
 	
 	@FindBy(xpath="//*[@resource-id='validateUser']")
-	public WebElement makePayment;
+	private WebElement makePayment;
 	
 	@FindBy(xpath="//*[@resource-id='android:id/message']")
-	public WebElement popMessage;
+	private WebElement popMessage;
 	
 	@FindBy(xpath="//*[@text='OK']")
-	public WebElement okBtn;
+	private WebElement okBtn;
 	
 	
-	public eBayPayment(WebDriver driver) {
+	public PaymentPage(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	

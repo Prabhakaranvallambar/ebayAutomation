@@ -21,8 +21,8 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 
 
-public class eBayLogin extends GenericMethods{
-	private static final Logger LOGGER = Logger.getLogger(eBayLogin.class);
+public class Login extends GenericMethods{
+	private static final Logger LOGGER = Logger.getLogger(Login.class);
 	public boolean stepStatus;
 	public static Integer searchVal,randomResult;
 	public static String productName,itemDesc,productPrice;
@@ -32,33 +32,33 @@ public class eBayLogin extends GenericMethods{
 	public static String usernameText,passwordText;
 	
 	@FindBy(xpath="//android.widget.Button[@text='SIGN IN']")
-	public static WebElement sign_In_Btn;
+	private static WebElement sign_In_Btn;
 	
 	@FindBy(xpath="//*[@resource-id='com.ebay.mobile:id/edit_text_username']")
-	public WebElement userName;
+	private WebElement userName;
 	
 	@FindBy(xpath="//*[@resource-id='com.ebay.mobile:id/edit_text_password']")
-	public WebElement password;
+	private WebElement password;
 	
 	@FindBy(xpath="//*[@text='Home']")
-	public WebElement homeBtn;
+	private WebElement homeBtn;
 	
 	@FindBy(xpath="//*[@resource-id='com.ebay.mobile:id/home']")
-	public WebElement homeButton;
+	private WebElement homeButton;
 	
 	@FindBy(xpath="//*[@resource-id='com.ebay.mobile:id/progress_bar']")
-	public WebElement pageLoad;
+	private WebElement pageLoad;
 	
 	@FindBy(xpath="//android.widget.Button[@text='MAYBE LATER']")
-	public WebElement mayBeLater;
+	private WebElement mayBeLater;
 	
 	@FindBy(xpath="//android.widget.Button[@text='NOT NOW']")
-	public WebElement notNow;
+	private WebElement notNow;
 	
 	@FindBy(xpath="//*[@resource-id='com.ebay.mobile:id/textview_sign_in_status']")
-	public WebElement signInStatus;
+	private WebElement signInStatus;
 	
-	public eBayLogin(WebDriver driver) {
+	public Login(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	

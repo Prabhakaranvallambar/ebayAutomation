@@ -20,90 +20,87 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 
 
-public class eBayProductPage extends GenericMethods{
-	private static final Logger LOGGER = Logger.getLogger(eBayProductPage.class);
+public class ProductPage extends GenericMethods{
+	private static final Logger LOGGER = Logger.getLogger(ProductPage.class);
 	public boolean stepStatus;
-	public static Integer searchVal,randomResult;
 	public static String productName,itemDesc,itemPrice;
-	ExtentTest logger;
-	
-	public static String usernameText,passwordText;
 	
 	@FindBy(xpath="//*[@resource-id='com.ebay.mobile:id/search_box']")
-	public WebElement searchBox;
+	private WebElement searchBox;
 	
 	@FindBy(xpath="//*[@text='Home']")
-	public WebElement home;
+	private WebElement home;
 	
 	@FindBy(xpath="//*[@resource-id='com.ebay.mobile:id/text_slot_1']")
-	public WebElement text_Slot;
+	private WebElement text_Slot;
 
 	@FindBy(xpath="//android.widget.RelativeLayout[3]//*[@resource-id='com.ebay.mobile:id/textview_item_price']")
-	public WebElement searchSelect;
+	private WebElement searchSelect;
 	
 	@FindBy(xpath="//android.widget.Button[@text='BUY IT NOW']")
-	public WebElement buyItNow;
+	private WebElement buyItNow;
 	
 	@FindBy(xpath="//android.widget.Button[@text='REVIEW']")
-	public WebElement review;
+	private WebElement review;
+	
 	@FindBy(xpath="//android.widget.Button[@text='Proceed to Pay']")
-	public WebElement proceedToPay;
+	private WebElement proceedToPay;
 	
 	@FindBy(xpath="//*[contains(@text,'FILTER')]")
-	public WebElement filter;
+	private WebElement filter;
 	
 	@FindBy(xpath="//*[contains(@text,'Price range')]")
-	public WebElement priceRange;
+	private WebElement priceRange;
 	
 	@FindBy(xpath="//*[contains(@text,'Custom price range')]")
-	public WebElement customPriceRange;
+	private WebElement customPriceRange;
 	
 	@FindBy(xpath="//*[@resource-id='com.ebay.mobile:id/minimum_price_view']")
-	public WebElement customMinPriceRange;
+	private WebElement customMinPriceRange;
 	
 	@FindBy(xpath="//*[@resource-id='com.ebay.mobile:id/maximum_price_view']")
-	public WebElement customMaxPriceRange;
+	private WebElement customMaxPriceRange;
 	
 	@FindBy(xpath="//android.widget.Button[@text='OK']")
-	public WebElement filterOkBtn;
+	private WebElement filterOkBtn;
 	
 	@FindBy(xpath="//android.widget.Button[@text='DONE']")
-	public WebElement filterDoneBtn;
+	private WebElement filterDoneBtn;
 	
 	@FindBy(xpath="//*[contains(@text,'Credit Card')]")
-	public WebElement creditCard;
+	private WebElement creditCard;
 	
 	@FindBy(xpath="//android.widget.RadioButton[@text='American Express']")
-	public WebElement cardType;
+	private WebElement cardType;
 	
 	@FindBy(xpath="//*[@resource-id='btnPay']")
-	public WebElement payBtn;
+	private WebElement payBtn;
 	
 	@FindBy(xpath="(//*[@id='CreditCardDetailsForm']/*/*[@class='android.widget.EditText'])[1]")
-	public WebElement cardNumber;
+	private WebElement cardNumber;
 	
 	@FindBy(xpath="(//*[@id='CreditCardDetailsForm']/*/*[@class='android.widget.EditText'])[2]")
-	public WebElement cardName;
+	private WebElement cardName;
 	
 	@FindBy(xpath="//android.widget.Spinner[@text='MM']")
-	public WebElement expiryMonth;
+	private WebElement expiryMonth;
 	
 	@FindBy(xpath="//android.widget.Spinner[@text='YY']")
-	public WebElement expiryYear;
+	private WebElement expiryYear;
 	
 	@FindBy(xpath="(//*[@id='CreditCardDetailsForm']/*/*[@class='android.widget.EditText'])[3]")
-	public WebElement cvv;
+	private WebElement cvv;
 	
 	@FindBy(xpath="//*[@resource-id='com.ebay.mobile:id/home']")
-	public WebElement closePaymentPage;
+	private WebElement closePaymentPage;
 	
 	@FindBy(xpath="//*[@text='select address']")
-	public WebElement selectAddress;
+	private WebElement selectAddress;
 	
 	@FindBy(xpath="//*[@resource-id='com.ebay.mobile:id/progress_bar']")
-	public WebElement pageLoad;
+	private WebElement pageLoad;
 	
-	public eBayProductPage(WebDriver driver) {
+	public ProductPage(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	
@@ -111,7 +108,7 @@ public class eBayProductPage extends GenericMethods{
 	
 
 /**********************************************************************************************************************************	
-	Method Name			: SearchData
+	Method Name			: searchData
 	Purpose of Method	: To search with the given input data
 		
 **********************************************************************************************************************************/	
@@ -152,7 +149,7 @@ public boolean searchData(WebDriver driver, String searchText) throws Exception 
 			}
 
 /**********************************************************************************************************************************	
-Method Name			: SellectingSearchResults
+Method Name			: sellectingSearchResults
 Purpose of Method	: To randomly select any one of the search result except the first and last result
 	
 **********************************************************************************************************************************/	
