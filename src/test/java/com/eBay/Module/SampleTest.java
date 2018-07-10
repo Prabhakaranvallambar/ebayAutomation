@@ -27,9 +27,9 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class SampleTestEbay extends MobileBase{
+public class SampleTest extends MobileBase{
 	
-	private static final Logger LOGGER = Logger.getLogger(SampleTestEbay.class);
+	private static final Logger LOGGER = Logger.getLogger(SampleTest.class);
 	public boolean stepResult;
 	public static String detailInstanceName;
 	ExtentReports extent;
