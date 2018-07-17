@@ -66,6 +66,8 @@ public class SampleTest extends MobileBase{
 		String usernameText=applicationProp.getProperty("usernameText");
 		String passwordText=applicationProp.getProperty("passwordText");
 		String searchText=applicationProp.getProperty("searchText");
+		String leastPrice=applicationProp.getProperty("leastPrice");
+		String hightPrice=applicationProp.getProperty("hightPrice");
 		String upiName=applicationProp.getProperty("upiName");
 		Login eB=new Login(driver);
 		stepResult=eB.SignIn(driver,usernameText,passwordText);
@@ -84,7 +86,7 @@ public class SampleTest extends MobileBase{
 			assertEquals(stepResult, true);
 		}
 		
-		stepResult=eBPP.selectingSearchResults(driver);
+		stepResult=eBPP.selectingSearchResults(driver,leastPrice,hightPrice);
 		if (stepResult) {
 			logger.log(LogStatus.PASS, "Selection of random product from the search results was successful");
 			logger.log(LogStatus.PASS, "The following Product was Selected "+eBPP.productName+" was selected");

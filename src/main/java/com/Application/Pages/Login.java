@@ -56,6 +56,9 @@ public class Login extends GenericMethods{
 	@FindBy(xpath="//*[@resource-id='com.ebay.mobile:id/textview_sign_in_status']")
 	private WebElement signInStatus;
 	
+	@FindBy(xpath="//*[@text='OK']")
+	private WebElement okBtn;
+	
 	public Login(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
@@ -74,7 +77,9 @@ public boolean SignIn(WebDriver driver,String usernameText, String passwordText)
 		
 		try {
 			stepStatus = false;
+			
 			waitForInvisibility(pageLoad);
+			waitForInvisibility(okBtn);
 			if (isElementPresent(sign_In_Btn, driver)) {
 				clickOnElement(driver,sign_In_Btn);
 				waitForInvisibility(pageLoad);

@@ -124,9 +124,7 @@ public boolean searchData(WebDriver driver, String searchText) throws Exception 
 					((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.ENTER);
 				}
 				
-				if (isElementPresent(pageLoad, driver)) {
-					sleep(5);
-				}
+				waitForInvisibility(pageLoad);
 				
 				if (isElementPresent(text_Slot, driver)) {
 					clickOnElement(driver, text_Slot);
@@ -154,12 +152,12 @@ Purpose of Method	: To randomly select any one of the search result except the f
 	
 **********************************************************************************************************************************/	
 
-public boolean selectingSearchResults(WebDriver driver) throws Exception {
+public boolean selectingSearchResults(WebDriver driver,String leastPrice, String hightPrice) throws Exception {
 	
 	
 	try {
 		stepStatus = false;
-		setFilter(driver, "1000", "150000");
+		setFilter(driver, leastPrice,hightPrice);
 		if (isElementPresent(text_Slot, driver)) {
 			clickOnElement(driver, text_Slot);
 		}
