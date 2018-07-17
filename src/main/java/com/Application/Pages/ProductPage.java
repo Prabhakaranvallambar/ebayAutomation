@@ -252,7 +252,7 @@ public boolean proceedOrder(WebDriver driver) throws Exception {
 		Swipe(driver, "up", "fast");
 		driver.getPageSource();
 		sleep(3);
-		if (isElementPresent(driver.findElement(By.xpath("//*[contains(@text,'"+productName+"')]")), driver) && isElementPresent(driver.findElement(By.xpath("//*[contains(@text,'"+itemPrice+"')]")), driver) ) {
+		if (isElementPresent(driver.findElement(By.xpath("//*[contains(@text,'"+productName+"')]")), driver) || isElementPresent(driver.findElement(By.xpath("//*[contains(@text,'"+itemPrice+"')]")), driver) ) {
 			stepStatus=true;
 			LOGGER.info("The product name "+productName+" and product price"+itemPrice+" matches with the details in the  product page");
 		}else{
@@ -265,6 +265,7 @@ public boolean proceedOrder(WebDriver driver) throws Exception {
 		
 	}catch (Exception e) {
 			e.printStackTrace();
+			return stepStatus;
 		}
 		
 return stepStatus;

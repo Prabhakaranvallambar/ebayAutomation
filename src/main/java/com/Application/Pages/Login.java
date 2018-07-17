@@ -41,6 +41,9 @@ public class Login extends GenericMethods{
 	@FindBy(xpath="//*[@text='Home']")
 	private WebElement homeBtn;
 	
+	@FindBy(xpath="//*[@text='NO THANKS']")
+	private WebElement noThanksBtn;
+	
 	@FindBy(xpath="//*[@resource-id='com.ebay.mobile:id/home']")
 	private WebElement homeButton;
 	
@@ -99,6 +102,9 @@ public boolean SignIn(WebDriver driver,String usernameText, String passwordText)
 				
 				if (isElementPresent(notNow, driver)) {
 					clickOnElement(driver, notNow);
+				}
+				if (isElementPresent(noThanksBtn, driver)) {
+					clickOnElement(driver, noThanksBtn);
 				}
 			}
 			waitForInvisibility(pageLoad);

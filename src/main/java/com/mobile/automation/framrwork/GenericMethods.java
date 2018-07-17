@@ -81,7 +81,6 @@ public class GenericMethods extends MobileBase{
 **********************************************************************************************************************************/	
 
 	protected void sleep(int timeOutInSeconds) {
-		LOGGER.info(new Object(){}.getClass().getEnclosingMethod().getName()+" for "+timeOutInSeconds+" seconds");
 		try {
 			Thread.sleep(timeOutInSeconds * 1000);
 		} catch (InterruptedException e) {
@@ -233,6 +232,7 @@ Purpose of Method: To Swipe in any desired direction and speed
     	boolean exit=false;
     	do {
 			if (isElementPresent(webElement, driver)) {
+				LOGGER.info("Waiting for object to be invisible");
 				sleep(5);
 			}else{
 				exit=true;
